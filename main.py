@@ -4,9 +4,9 @@ from local_recognizer import LocalRecognizer
 from listener import MutableMicrophone, ResponsiveRecognizer
 
 def create_mycroft_recognizer(rate, lang):
-    wake_word = "hey mycroft"
-    phonemes = "HH EY . M AY K R AO F T"
-    threshold = "1e-90"
+    wake_word = "blanky"
+    phonemes = "B L AE NG K IY"
+    threshold = "1e-5"
     return LocalRecognizer(wake_word, phonemes, threshold, rate, lang)
 
 rate = 16000

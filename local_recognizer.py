@@ -19,13 +19,13 @@
 import time
 
 import os
-from pocketsphinx.pocketsphinx import Decoder
+from pocketsphinx import Decoder
 import tempfile
 
 __author__ = 'seanfitz, jdorleans'
 
 BASEDIR = os.path.dirname(os.path.abspath(__file__))
-MODELDIR = 'pocketsphinx-python/deps/pocketsphinx/model'
+MODELDIR = '../pocketsphinx-python/deps/pocketsphinx/model'
 
 class LocalRecognizer(object):
     def __init__(self, key_phrase, phonemes, threshold, sample_rate=16000,
