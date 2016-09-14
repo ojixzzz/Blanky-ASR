@@ -19,13 +19,12 @@
 import time
 
 import os
-from pocketsphinx import Decoder
+from pocketsphinx import Decoder, get_model_path
 import tempfile
 
 __author__ = 'seanfitz, jdorleans'
 
-BASEDIR = os.path.dirname(os.path.abspath(__file__))
-MODELDIR = '../pocketsphinx-python/deps/pocketsphinx/model'
+MODELDIR = get_model_path()
 
 class LocalRecognizer(object):
     def __init__(self, key_phrase, phonemes, threshold, sample_rate=16000,
@@ -49,7 +48,7 @@ class LocalRecognizer(object):
 
     def create_config(self, dict_name):
         config = Decoder.default_config()
-        config.set_string('-hmm', os.path.join(MODELDIR, 'en-us/en-us'))
+        config.set_string('-hmm', os.path.join(MODELDIR, 'en-us'))
         config.set_string('-dict', dict_name)
         config.set_string('-keyphrase', self.key_phrase)
         config.set_float('-kws_threshold', float(self.threshold))
