@@ -18,16 +18,17 @@ MIN_AUDIO_SIZE = 0.5
 rate = 16000
 device_index=None
 lang = "en-us"
-microphone = MutableMicrophone(sample_rate=rate,
+
+def dengarkan():
+    microphone = MutableMicrophone(sample_rate=rate,
                                     device_index=device_index)
 
-mycroft_recognizer = create_mycroft_recognizer(rate, lang)
-remote_recognizer = ResponsiveRecognizer(mycroft_recognizer)
-google_sr = speech_recognition.Recognizer()
+    mycroft_recognizer = create_mycroft_recognizer(rate, lang)
+    remote_recognizer = ResponsiveRecognizer(mycroft_recognizer)
+    google_sr = speech_recognition.Recognizer()
 
-with microphone as source:
-    remote_recognizer.adjust_for_ambient_noise(source)
-    while True:
+    with microphone as source:
+        remote_recognizer.adjust_for_ambient_noise(source)
         try:
             audio = remote_recognizer.listen(source)
             if _audio_length(audio) > MIN_AUDIO_SIZE:
@@ -35,5 +36,8 @@ with microphone as source:
                 print 'Blanky: %s' % text
             else:
                 print 'Blanky: Tidak ada perintah'
-        except IOError, ex:
+        except Exception as ex:
             print(ex)
+
+while True:
+    dengarkan()

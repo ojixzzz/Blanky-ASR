@@ -24,7 +24,7 @@ import tempfile
 
 __author__ = 'seanfitz, jdorleans'
 
-MODELDIR = get_model_path()
+MODELDIR = 'model'
 
 class LocalRecognizer(object):
     def __init__(self, key_phrase, phonemes, threshold, sample_rate=16000,
