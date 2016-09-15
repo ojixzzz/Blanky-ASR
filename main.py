@@ -4,7 +4,7 @@ import speech_recognition
 from local_recognizer import LocalRecognizer
 from listener import MutableMicrophone, ResponsiveRecognizer
 
-def create_mycroft_recognizer(rate, lang):
+def create_key_recognizer(rate, lang):
     wake_word = "blanky"
     phonemes = "B L AE NG K IY"
     threshold = "1e-1"
@@ -23,8 +23,8 @@ def dengarkan():
     microphone = MutableMicrophone(sample_rate=rate,
                                     device_index=device_index)
 
-    mycroft_recognizer = create_mycroft_recognizer(rate, lang)
-    remote_recognizer = ResponsiveRecognizer(mycroft_recognizer)
+    key_recognizer = create_key_recognizer(rate, lang)
+    remote_recognizer = ResponsiveRecognizer(key_recognizer)
     google_sr = speech_recognition.Recognizer()
 
     with microphone as source:
